@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TodosContext } from "../context/todos";
 import TodoEdit from "./TodoEdit";
 import EditIcon from "../assets/edit.svg";
 import DeleteIcon from "../assets/delete.svg";
 
-const TodoShow = ({ todo, updateTodo, removeTodo }) => {
+const TodoShow = ({ todo }) => {
   const [isEditAble, setIsEditAble] = useState(false);
+
+  const { updateTodo, removeTodo } = useContext(TodosContext);
 
   const handleSubmit = (id, title) => {
     updateTodo(id, title);

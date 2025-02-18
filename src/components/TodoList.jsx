@@ -1,15 +1,11 @@
+import { useContext } from "react";
+import { TodosContext } from "../context/todos";
 import TodoShow from "./TodoShow";
 
-const TodoList = ({ todos, updateTodo, removeTodo }) => {
+const TodoList = () => {
+  const { todos } = useContext(TodosContext);
   const renderTodos = todos.map((todo) => {
-    return (
-      <TodoShow
-        key={todo.id}
-        todo={todo}
-        updateTodo={updateTodo}
-        removeTodo={removeTodo}
-      />
-    );
+    return <TodoShow key={todo.id} todo={todo} />;
   });
 
   return <ul className="todo-list">{renderTodos}</ul>;
